@@ -1,0 +1,84 @@
+========================================================================
+STOCKROOM - TECHNICAL DOCUMENTATION
+========================================================================
+
+Live Site: https://ugamba3.github.io/stockroom/
+GitHub Repository: https://github.com/Ugamba3/stockroom
+
+------------------------------------------------------------------------
+1. OVERVIEW
+------------------------------------------------------------------------
+Stockroom is a lightweight, frontend-only e-commerce web application designed 
+to show and sell curated daily essentials. It operates completely on the 
+client side using HTML5, CSS3, and JavaScript, with no backend server or 
+database required.
+
+------------------------------------------------------------------------
+2. TECHNICAL ARCHITECTURE & LOGIC
+------------------------------------------------------------------------
+
+--- A. CENTRAL DATA STORE ---
+All products, slide content, and pop-up metadata live directly inside 
+`script.js` in global arrays.
+
+- `inventory`: A master array containing product objects (id, name, 
+  category, description, price, stock, and image URL).
+- `heroSlides`: Stores text and background image URLs for the homepage banner.
+- `popup`: Stores interactive text and images triggered by the wheel menu.
+
+Every system feature (search, low-stock warnings, cart rendering, and price 
+calculations) reads directly from this central `inventory` array.
+
+--- B. LIVE SEARCH & FILTERING ---
+- User typing or clicking search runs `runSearch()`.
+- The search query is converted to lowercase and compared against `name`, 
+  `category`, and `description` properties using `Array.prototype.filter()`.
+- `renderResults()` dynamically updates the DOM with the matching product 
+  cards.
+
+--- C. SHOPPING CART & LOCALSTORAGE ---
+- Cart items persist across pages (from index.html to checkout.html) using 
+  the browser's `localStorage` under the key `"stockroomCart"`.
+- `addToCart(id)` checks if an item is already in the cart before adding it, 
+  updates the slide-out cart drawer, and calls `saveCart()`.
+- `renderCart()` keeps the item list, quantity counts, and subtotal updated.
+- `checkout.html` reads directly from `localStorage` on page load to render 
+  order summary details, calculate an 8% sales tax, and compute the total.
+
+--- D. HERO CAROUSEL & PROMO MODAL ---
+- Hero Slider: `renderHero()` automatically cycles banner slides every 6.5 
+  seconds using `setInterval()`, while supporting manual controls via 
+  arrows and pagination dots.
+- Low-Stock Modal: On load, `script.js` filters the inventory for items 
+  where `stock <= 3`. If any match, a modal pop-up automatically highlights 
+  a limited-stock item.
+
+--- E. SCROLL EFFECTS & NAVIGATION ---
+- Header & Scroll-to-Top: A scroll listener on `window` toggles a sticky class 
+  on the header when scrolling past `0px` and displays a `.to-top` button 
+  when scrolling past `560px`.
+- Wheel Navigation: Hovering over numbers on the sidebar wheel calls 
+  `hoverPop()`, which changes featured content dynamically on `index.html`.
+
+--- F. FORM VALIDATION & DUAL-FORM SWIPE ---
+- Input Validation: Form fields (name, email, password) validate on input 
+  using regex checks in `validateField()`.
+- Dual-Form Slider (`form.html`): The `swipe()` function toggles CSS classes 
+  (`.active`) to slide smoothly between Login and Register forms on the same 
+  page using CSS transforms.
+
+------------------------------------------------------------------------
+3. FILE STRUCTURE
+------------------------------------------------------------------------
+
+- `index.html`   : Main shop page (Hero, Inventory, Search, About, Contact, 
+                   Footer, and Cart Drawer).
+- `checkout.html`: Checkout page reading cart data from localStorage, 
+                   calculating tax, and handling order placement.
+- `form.html`    : Standalone Login and Registration page with smooth form 
+                   swiping mechanics.
+- `script.js`    : Contains the main application logic, inventory state, 
+                   cart methods, search functions, and event bindings.
+- `style.css`    : Global stylesheet managing CSS variables, flex/grid 
+                   layouts, animations, and mobile responsiveness.
+========================================================================
