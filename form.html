@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stockroom</title>
+    <link rel="stylesheet" href="style.css">
+<!-- <base target="_blank"> -->
+</head>
+<body>
+    <header class="site-header form-header">
+        <a class="logo" href="index.html">stockroom</a>
+        <div class="header-actions">
+            <a class="primary-button" style="text-decoration:none;" href="index.html">
+            <i class="fa-solid fa-arrow-left"></i> Back to Shop
+            </a>
+        </div>
+    </header>
+
+    <div class="form-body-wrapper">
+        <div class="form-body">
+            <form class="login-form" action="mailto:">
+                <div class="form-title">
+                    <h3>Welcome back</h3>
+                    <span onclick="swipe('register-form')">signin <i class="fa-solid fa-pen-to-square"></i></span>
+                </div>
+                <label>Email address *
+                    <input id="login-email" name="login-email" type="email" autocomplete="email" required />
+                </label>
+                <label>Password *
+                    <input id="login-password" name="login-password" type="password" autocomplete="current-password" required />
+                </label>
+                <button class="primary-button" type="submit">
+                    Log in <span>→</span>
+                </button>
+                <p class="form-status" id="login-status" role="status"></p>
+            </form>
+
+            <form class="register-form" id="registration-form" action="mailto:" novalidate>
+                <div class="form-title">
+                    <h3>Register Now!</h3>
+                    <span onclick="swipe('login-form')">login <i class="fa-solid fa-right-to-bracket"></i></span>
+                </div>
+                <label>Full name *
+                    <input id="name" name="name" type="text" autocomplete="name" required />
+                    <small class="error" id="name-error"></small>
+                </label>
+                <label>Email address *
+                    <input id="email" name="email" type="email" autocomplete="email" required />
+                    <small class="error" id="email-error"></small>
+                </label>
+                <div class="form-pair">
+                    <label>Password *
+                        <input id="password" name="password" type="password" required />
+                        <small class="error" id="password-error"></small>
+                    </label>
+                    <label>Confirm password *
+                        <input id="confirm-password" name="confirm-password" type="password" required />
+                        <small class="error" id="confirm-password-error"></small>
+                    </label>
+                </div>
+                <label class="checkbox-label">
+                    <input id="updates" type="checkbox" /> Send me occasional stock updates
+                </label>
+                <button class="primary-button" type="submit">
+                    Create account <span>→</span>
+                </button>
+                <p class="form-status" id="form-status" role="status"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script src="https://kit.fontawesome.com/13f42163ac.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stockroom</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <aside class="sidebar" aria-label="Explore Stockroom">
+            <div class="wheel-wrap">
+                <div class="wheel" aria-hidden="true">
+                    <span onclick="hoverPop('Stockroom')">01</span>
+                    <span onclick="hoverPop('ShelfWise')">02</span>
+                    <span onclick="hoverPop('Inventory Hub')">03</span>
+                    <span onclick="hoverPop('Find & Cart')">04</span>
+                </div>
+                <div class="wheel-center"><i class="fa-solid fa-cart-shopping"></i></div>
+            </div>
+            <p class="eyebrow">Explore the room</p>
+            <h2>Find your next essential.</h2>
+            <nav class="side-nav" aria-label="Secondary navigation">
+                <a href="#inventory">New arrivals <span>↗</span></a>
+                <a href="#inventory">Best sellers <span>↗</span></a>
+                <a href="#inventory">Under $50 <span>↗</span></a>
+                <a href="#inventory">Staff picks <span>↗</span></a>
+            </nav>
+            <div class="sidebar-note">
+                <span>✦</span> Curated weekly<br /><small>Small batch. Big utility.</small>
+            </div>
+        </aside>
+
+        <main>
+            <header id="top">
+                <div class="site-header">
+                    <a class="logo" href="#home">stockroom</a>
+                    <div class="header-actions">
+                        <button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                        <button class="nav-cart" id="nav-cart" type="button" aria-label="Open cart">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span id="cart-count">0</span>
+                        </button>
+                        <a href="form.html">
+                            <button class="user-button" id="user-btn" type="button" aria-label="Open account">
+                                <i class="fa fa-user user-label"></i>
+                            </button>
+                        </a>
+                        <!-- <div class="divider"></div> -->
+                    </div>
+                </div>
+                <nav class="main-nav" aria-label="Main navigation">
+                    <a class="active" href="#">Home</a>
+                    <a href="#inventory">Inventory</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <div class="menu-dropdown">
+                        <a class="active" href="#">Home</a>
+                        <a href="#inventory">Inventory</a>
+                        <a href="#about">About</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="cart" id="cart">
+                <div class="cart-heading">
+                    <h2>
+                        Cart
+                        <span class="cart-heading-count" id="cart-heading-count">(0)</span>
+                    </h2>
+                    <button class="close-btn" id='close-cart' aria-label="Close cart">
+                        <i class="fa fa-x"></i>
+                    </button>
+                </div>
+                <div id="cart-items" class="cart-items">
+                    <p class="empty-state">
+                        Your cart is empty.
+                    </p>
+                </div>
+                <div class="price-text">
+                    <span class="total-price">$0.00</span>
+                </div>
+                <a href="checkout.html">
+                    <button class="checkout-button">Proceed to Checkout</button>
+                </a>
+            </div>
+
+            <div class="hovered-selection" id="select"></div>
+            
+            <div class="hero" id="home" aria-label="Stockroom highlights">
+                <div class="hero-slides" id="hero-slides"></div>
+                <div class="hero-dots" id="hero-dots" aria-label="Choose a hero slide"></div>
+                <button class="hero-arrow hero-prev" type="button" aria-label="Previous slide" >←</button>
+                <button class="hero-arrow hero-next" type="button" aria-label="Next slide" > → </button>
+            </div>
+            
+            <section class="section inventory-section" id="inventory">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">The stockroom</p>
+                        <h2>Search the inventory</h2>
+                    </div>
+                    <span class="item-count" id="item-count"></span>
+                </div>
+                <div class="search-row">
+                    <label class="search-box"><span aria-hidden="true">⌕</span
+                        ><input
+                        id="search-input"
+                        type="search"
+                        placeholder="Search by product, category, or mood..."
+                        autocomplete="off"
+                        /><button
+                        id="clear-search"
+                        class="clear-search"
+                        type="button"
+                        aria-label="Clear search"
+                        >
+                        ×
+                        </button></label
+                    >
+                    <button class="primary-button" id="search-button" type="button">
+                        Search <span aria-hidden="true">→</span>
+                    </button>
+                </div>
+
+                <div class="results-box" id="results-box" aria-live="polite"></div>
+
+                <div class="inventory-actions">
+                    <button
+                        class="text-button"
+                        id="see-more"
+                        type="button"
+                        aria-expanded="false"
+                    >
+                        See more <span>+</span>
+                    </button>
+                    <div class="see-more-menu" id="see-more-menu" hidden>
+                        <strong>Good to know</strong>
+                        <p>
+                        Every item is checked, packed, and sent from our little
+                        stockroom within two working days.
+                        </p>
+                        <a href="#about">Meet the people behind it →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section section" id="about">
+
+                <div id="about-content"></div>
+
+                <a
+                class="github-link"
+                href="https://github.com"
+                target="_blank"
+                rel="noreferrer"
+                >Visit our GitHub <span>↗</span></a
+                >
+            </section>
+
+            <section class="contact-section section" id="contact">
+                <div class="contact-copy">
+                    <p class="eyebrow">Stay in the loop</p>
+                    <h2>Good things,<br /><em>well stocked.</em></h2>
+                    <p>
+                        Tell us where to send the useful stuff. We will only write when
+                        there is something worth opening.
+                    </p>
+                    <p class="contact-detail">
+                        hello@stockroom.example<br />Mon–Fri, 9am–5pm
+                    </p>
+                </div>
+                <form action="mailto:">
+                    <div class="form-title">
+                        <h3>Get in touch</h3>
+                    </div>
+                    <label>
+                        Full name *
+                        <input id="name" name="name" type="text" autocomplete="name" required />
+                    </label>
+                    <label>
+                        Email address *
+                        <input id="email" name="email" type="email" autocomplete="email" required />
+                    </label>
+                    <div class="form-pair">
+                        <label>
+                            Phone No. *
+                            <input name="Phone No." type="tel" required />
+                        </label>
+                        <label>
+                            Location *
+                            <select name="location" id="" required >
+                                <option value="#">Select Location</option>
+                                <option value="port harcourt">port harcourt</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label for="Message">
+                        Type in your Message *
+                        <textarea name="" id="" width="100%"></textarea>
+                    </label>
+                    <button class="primary-button" type="submit">
+                        Create account <span>→</span>
+                    </button>
+                    <p class="form-status" id="form-status" role="status"></p>
+                </form>
+            </section>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63615.501050571685!2d6.94126642167969!3d4.77533560000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1069cc0744c04851%3A0x8be3aa0213e2f5c2!2sPort%20harcourt%20Mall!5e0!3m2!1sen!2sng!4v1789755186289!5m2!1sen!2sng" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            
+            <footer class="site-footer">
+                <div class="footer-brand">
+                    <a class="logo" href="#top"><span>ST</span> stockroom</a>
+                    <p>Objects for a considered life.</p>
+                </div>
+                <div class="footer-links">
+                    <div>
+                        <a href="#">Home</a>
+                        <a href="#inventory">Inventory</a>
+                        <a href="#about">About us</a>
+                    </div>
+                    <div>
+                        <a href="#contact">Contact</a>
+                        <a href="#inventory">Shipping</a>
+                        <a href="#inventory">Journal</a>
+                    </div>
+                    <div>
+                        <a href="#contact">hello@stockroom.example</a>
+                        <a href="#contact">Instagram</a>
+                    </div>
+                </div>
+                <p class="copyright">© 2026 Stockroom</p>
+            </footer>
+            
+            <a href="#" class="to-top">Back to top ↑</a>
+            
+        </main>
+    </div>
+
+    <div class="buy-container" id="buyNow">
+        
+    </div>
+
+    <script src="script.js"></script>
+
+    <script src="https://kit.fontawesome.com/13f42163ac.js" crossorigin="anonymous"></script>
+</body>
+</html>
